@@ -62,8 +62,26 @@ body {
 											<strong>${list.username}</strong> <span>commented
 												${list.postTime}</span>
 										</div>
-										<div class="panel-body">${list.msg}</div>
-										<!-- /panel-body -->
+
+										<div class="panel-body">${list.msg}
+											<form class="form-horizontal" role="form" method="post"
+												action="like">
+												<input type="hidden" name="id" value="${list.id}" />
+												<c:if test="${sessionScope.user.canLike == true }">
+													<button class="btn btn-sm btn-default like-btn active"
+														type="submit" id="10">
+														<span class="glyphicon glyphicon-thumbs-up"></span> <span
+															class="text">Like</span> <span class="badge like-badge">${list.rating}</span>
+												</c:if>
+												<c:if test="${sessionScope.user.canLike == false }">
+													<button class="btn btn-sm btn-default like-btn active"
+														type="button" id="10">
+														<span class="glyphicon glyphicon-thumbs-up"></span> <span
+															class="text">Already Liked</span> <span class="badge like-badge">${list.rating}</span>
+												</c:if>
+												</button>
+											</form>
+										</div>
 									</div>
 									<!-- /panel panel-default -->
 								</div>
@@ -104,6 +122,7 @@ body {
 
 	<!-- Bootstrap Core JavaScript -->
 	<script src="/resources/js/bootstrap.min.js"></script>
+
 
 </body>
 

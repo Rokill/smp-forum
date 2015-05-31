@@ -21,7 +21,7 @@ import javax.validation.constraints.Size;
 @NamedQueries({
 		@NamedQuery(name = "Leaf.findAll", query = "SELECT a FROM Leaf a"),
 		@NamedQuery(name = "Leaf.findById", query = "SELECT a FROM Leaf a WHERE a.id = :rootId"),
-		@NamedQuery(name = "Leaf.findByRootId", query = "SELECT a FROM Leaf a WHERE a.upperLeafId = :rootId") })
+		@NamedQuery(name = "Leaf.findByRootId", query = "SELECT a FROM Leaf a WHERE a.upperLeafId = :rootId ORDER BY a.postTime DESC") })
 public class Leaf implements Serializable {
 
 	@Id
@@ -37,6 +37,7 @@ public class Leaf implements Serializable {
 	@Column(name = "postime")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date postTime;
+	
 
 	@Column(name = "msg", columnDefinition = "bpchar")
 	private String msg;
@@ -46,6 +47,9 @@ public class Leaf implements Serializable {
 
 	@Column(name = "upper_leaf_id", nullable = true)
 	private int upperLeafId;
+	
+	@Column(name = "rating")
+	private int rating;
 
 	public Leaf() {
 		// TODO Auto-generated constructor stub
@@ -164,7 +168,15 @@ public class Leaf implements Serializable {
 	public void setLastLeaf(boolean isLastleaf) {
 		this.isLastLeaf = isLastleaf;
 	}
-	
+
+	public int getRating() {
+		return rating;
+	}
+
+	public void setRating(int rating) {
+		this.rating = rating;
+	}
+
 
 
 }

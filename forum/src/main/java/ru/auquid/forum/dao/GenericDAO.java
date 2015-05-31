@@ -13,12 +13,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-/**
- *
- * @author Stanislav Zabielin
- * @author maks
- *
- */
+
 
 public class GenericDAO<T> {
 

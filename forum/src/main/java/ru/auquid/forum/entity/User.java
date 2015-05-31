@@ -1,6 +1,7 @@
 package ru.auquid.forum.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +11,8 @@ import javax.persistence.InheritanceType;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -32,6 +35,10 @@ public class User implements Serializable {
     @Size(min = 1, max = 60)
     @Column(name = "pass")
     private String password;
+    
+    @Column(name = "like_time")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date likeTime;
 
 	public User(String username, String password) {
 		super();
@@ -86,6 +93,14 @@ public class User implements Serializable {
 		} else if (!username.equals(other.username))
 			return false;
 		return true;
+	}
+
+	public Date getLikeTime() {
+		return likeTime;
+	}
+
+	public void setLikeTime(Date likeTime) {
+		this.likeTime = likeTime;
 	}
 	
 	
