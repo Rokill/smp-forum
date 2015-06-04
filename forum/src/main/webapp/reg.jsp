@@ -12,7 +12,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Bare - Start Bootstrap Template</title>
+<title>Forum - Registration</title>
 
 <!-- Bootstrap Core CSS -->
 <link rel="stylesheet"

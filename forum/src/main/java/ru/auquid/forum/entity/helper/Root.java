@@ -29,7 +29,15 @@ public class Root extends Leaf {
 				dao.close();
 		}
 		if (newest != null)
-			lastMsg = newest.getMsg();
+		{
+			lastMsg = shorten(newest.getMsg());
+		}
+	}
+
+	private String shorten(String msg) {
+		if (msg.length()>120)
+			return msg.substring(0,120);
+		return msg;
 	}
 
 	public String getLastMsg() {

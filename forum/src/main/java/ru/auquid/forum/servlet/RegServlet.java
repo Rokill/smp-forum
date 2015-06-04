@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import ru.auquid.forum.beans.BranchBeanRemote;
 import ru.auquid.forum.beans.UserBeanRemote;
 import ru.auquid.forum.entity.User;
+import ru.auquid.forum.entity.helper.ForumUser;
 
 /**
  * Servlet implementation class RegServlet
@@ -46,7 +47,7 @@ public class RegServlet extends HttpServlet {
 		User user = userBean.registrate(name,pass);
 		if (user != null)
 		{
-			request.getSession().setAttribute("user", user);
+			request.getSession().setAttribute("user", new ForumUser(user));
 			request.getRequestDispatcher("logged.jsp").forward(request,
 					response);
 		}

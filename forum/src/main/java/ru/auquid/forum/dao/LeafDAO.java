@@ -6,18 +6,34 @@ import java.util.List;
 import javax.persistence.TypedQuery;
 
 import ru.auquid.forum.entity.Leaf;
+import ru.auquid.forum.entity.helper.MessageLeaf;
 import ru.auquid.forum.entity.helper.Root;
 
 public class LeafDAO extends GenericDAO<Leaf> {
 
 	public LeafDAO() {
 	}
-
+	
 	public List<Leaf> getTreeFromRoot(Leaf root) {
 		TypedQuery<Leaf> query = em.createNamedQuery("Leaf.findByRootId",
 				Leaf.class);
 		query.setParameter("rootId", root.getId());
 		return query.getResultList();
+	}
+
+	public List<MessageLeaf> getMsgFromRoot(Leaf root) {
+		TypedQuery<Leaf> query = em.createNamedQuery("Leaf.findByRootId",
+				Leaf.class);
+		query.setParameter("rootId", root.getId());
+		return toMessageLeaf(query.getResultList());
+	}
+
+	private List<MessageLeaf> toMessageLeaf(List<Leaf> resultList) {
+		List<MessageLeaf> list = new ArrayList<>();
+		for (Leaf l:resultList){
+			list.add(new MessageLeaf(l));
+		}
+		return list;
 	}
 
 	public List<Root> getRootList(Leaf root) {

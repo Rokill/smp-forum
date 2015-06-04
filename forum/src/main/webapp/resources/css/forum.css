@@ -228,3 +228,11 @@
 .ekko-lightbox .modal-footer {
 	text-align: left
 }
+
+.darkClass
+{
+    filter:alpha(opacity=50); /* IE */
+    opacity: 0.5; /* Safari, Opera */
+    -moz-opacity:0.50; /* FireFox */
+}
+

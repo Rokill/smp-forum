@@ -12,7 +12,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Bare - Start Bootstrap Template</title>
+<title>Forum</title>
 
 <!-- Bootstrap Core CSS -->
 <link rel="stylesheet" href="resources/css/bootstrap.min.css">
@@ -59,63 +59,75 @@ body {
 								<div class="col-sm-5">
 									<div class="panel panel-default">
 										<div class="panel-heading">
+											<c:if test="${not list.mainMsg}">
+												<div id="darkLayer" class="darkClass">
+											</c:if>
 											<strong>${list.username}</strong> <span>commented
-												${list.postTime}</span>
+												${list.time}</span>
+											<c:if test="${not list.mainMsg}">
 										</div>
-
-										<div class="panel-body">${list.msg}
-											<form class="form-horizontal" role="form" method="post"
-												action="like">
-												<input type="hidden" name="id" value="${list.id}" />
-												<c:if test="${sessionScope.user.canLike == true }">
-													<button class="btn btn-sm btn-default like-btn active"
-														type="submit" id="10">
-														<span class="glyphicon glyphicon-thumbs-up"></span> <span
-															class="text">Like</span> <span class="badge like-badge">${list.rating}</span>
-												</c:if>
-												<c:if test="${sessionScope.user.canLike == false }">
-													<button class="btn btn-sm btn-default like-btn active"
-														type="button" id="10">
-														<span class="glyphicon glyphicon-thumbs-up"></span> <span
-															class="text">Already Liked</span> <span class="badge like-badge">${list.rating}</span>
-												</c:if>
-												</button>
-											</form>
-										</div>
+										</c:if>
 									</div>
-									<!-- /panel panel-default -->
+									<c:if test="${not list.mainMsg}">
+										<div id="darkLayer" class="darkClass">
+									</c:if>
+									<div class="panel-body">${list.msg}
+										<form class="form-horizontal" role="form" method="post"
+											action="like">
+											<input type="hidden" name="id" value="${list.id}" />
+											<c:if test="${sessionScope.user.canLike == true }">
+												<button class="btn btn-sm btn-default like-btn active"
+													type="submit" id="10">
+													<span class="glyphicon glyphicon-thumbs-up"></span> <span
+														class="text">Like</span> <span class="badge like-badge">${list.rating}</span>
+											</c:if>
+											<c:if test="${sessionScope.user.canLike == false }">
+												<button class="btn btn-sm btn-default like-btn active"
+													type="button" id="10">
+													<span class="glyphicon glyphicon-thumbs-up"></span> <span
+														class="text">Already Liked</span> <span
+														class="badge like-badge">${list.rating}</span>
+											</c:if>
+											</button>
+										</form>
+									</div>
+									<c:if test="${not list.mainMsg}">
 								</div>
+								</c:if>
 							</div>
-							<!-- /row -->
-						</c:forEach>
+							<!-- /panel panel-default -->
 					</div>
-					<!-- /container -->
-					<c:if test="${sessionScope.user != null}">
-
-						<form class="form-horizontal" role="form" method="post"
-							action="post">
-							<div class="form-group">
-								<label for="message" class="col-sm-2 control-label">Message</label>
-								<div class="col-sm-10">
-									<textarea class="form-control" rows="4" name="message"></textarea>
-								</div>
-							</div>
-							<div class="form-group">
-								<div class="col-sm-10 col-sm-offset-2">
-									<input id="msg_but" name="msg_but" type="hidden" value="ok">
-									<input id="m" name="m" type="submit" value="Send"
-										class="btn btn-primary">
-								</div>
-							</div>
-						</form>
-					</c:if>
-				</section>
 			</div>
-		</div>
-		<!-- /.row -->
+			<!-- /row -->
 
+			</c:forEach>
+		</div>
+		<!-- /container -->
+		<c:if test="${sessionScope.user != null}">
+
+			<form class="form-horizontal" role="form" method="post" action="post">
+				<div class="form-group">
+					<label for="message" class="col-sm-2 control-label">Message</label>
+					<div class="col-sm-10">
+						<textarea class="form-control" rows="4" name="message"></textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-10 col-sm-offset-2 text-center" style="color: #999;">
+						Tip: Use [IMG]http://ofYourPicture[/IMG] to insert image in your post.
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-10 col-sm-offset-2">
+						<input id="msg_but" name="msg_but" type="hidden" value="ok">
+						<input id="m" name="m" type="submit" value="Send"
+							class="btn btn-primary">
+					</div>
+				</div>
+			</form>
+		</c:if>
+		</section>
 	</div>
-	<!-- /.container -->
 
 	<!-- jQuery Version 1.11.1 -->
 	<script src="/resources/js/jquery.js"></script>

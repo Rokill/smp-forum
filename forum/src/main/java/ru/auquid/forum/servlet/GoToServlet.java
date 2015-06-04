@@ -33,8 +33,6 @@ public class GoToServlet extends HttpServlet {
 		LeafDAO dao = null;
 		try {
 			dao = new LeafDAO();
-			request.setAttribute("msg", dao.getTreeFromRoot(dao.get(Integer
-					.valueOf(request.getParameter("id")))));
 			request.getSession().setAttribute("rootId",
 					request.getParameter("id"));
 			request.setAttribute("upperRootId", dao.get(dao.get(
@@ -47,6 +45,8 @@ public class GoToServlet extends HttpServlet {
 				request.getRequestDispatcher("index.jsp").forward(request,
 						response);
 			} else {
+				request.setAttribute("msg", dao.getMsgFromRoot(dao.get(Integer
+						.valueOf(request.getParameter("id")))));
 				request.getRequestDispatcher("msg.jsp").forward(request,
 						response);
 			}

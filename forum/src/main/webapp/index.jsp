@@ -12,7 +12,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Bare - Start Bootstrap Template</title>
+<title>Forum</title>
 
 <!-- Bootstrap Core CSS -->
 <link rel="stylesheet" href="resources/css/bootstrap.min.css">
@@ -50,10 +50,19 @@ body {
 			<div class="col-lg-6">
 				<c:forEach items="${msg}" var="list">
 					<div class="list-group">
-						<a href="goto?id=${list.id}" class="list-group-item">
-							<h4 class="list-group-item-heading">${list.msg}</h4>
-							<p class="list-group-item-text">${list.lastMsg}</p>
-						</a>
+						<c:if test="${list.id == 1}">
+							<a href="edit?id=${list.id}" class="list-group-item">
+								<h4 class="list-group-item-heading">${list.msg}</h4>
+								<p class="list-group-item-text">${list.lastMsg}</p>
+								<br>
+							</a>
+						</c:if>
+						<c:if test="${list.id != 1}">
+							<a href="goto?id=${list.id}" class="list-group-item">
+								<h4 class="list-group-item-heading">${list.msg}</h4>
+								<p class="list-group-item-text">${list.lastMsg}</p>
+							</a>
+						</c:if>
 					</div>
 				</c:forEach>
 			</div>
@@ -71,8 +80,9 @@ body {
 							<textarea class="form-control" rows="1" name="message"></textarea>
 						</div>
 						<br>
-						<div class="col-sm-3">
-							<label for="isLast" class="col-sm-2 control-label">New Theme?</label>
+						<div class="col-sm-1">
+							<label for="isLast" class="col-sm-2 control-label">New
+								Theme?</label>
 						</div>
 						<div class="col-sm-1">
 							<input type="checkbox" aria-label="..." name="isLast">
@@ -100,6 +110,7 @@ body {
 	<!-- Bootstrap Core JavaScript -->
 	<script
 		src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
 
 </body>
 

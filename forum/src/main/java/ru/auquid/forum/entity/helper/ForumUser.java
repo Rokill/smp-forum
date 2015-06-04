@@ -12,8 +12,6 @@ import ru.auquid.forum.entity.User;
 
 public class ForumUser extends User {
 	
-	@EJB
-	private transient UserBeanRemote userBean;
 
 	private boolean canLike;
 

@@ -68,6 +68,19 @@ public class BranchBean implements BranchBeanRemote {
 				dao.close();
 		}
 	}
+	
+	public void updateName(Integer id, String name) {
+		LeafDAO dao = new LeafDAO();
+		try {
+			Leaf root = dao.get(id);
+			root.setMsg(name);
+			dao.persist(root);
+		} finally {
+			if (dao != null)
+				dao.close();
+		}
+		
+	}
 
 	public void ejbActivate() throws EJBException, RemoteException {
 		// TODO Auto-generated method stub
@@ -89,6 +102,8 @@ public class BranchBean implements BranchBeanRemote {
 		// TODO Auto-generated method stub
 		
 	}
+
+	
 
 
 }

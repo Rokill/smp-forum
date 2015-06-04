@@ -14,7 +14,6 @@ import ru.auquid.forum.beans.BranchBeanRemote;
 import ru.auquid.forum.dao.LeafDAO;
 import ru.auquid.forum.entity.Leaf;
 import ru.auquid.forum.entity.User;
-import ru.auquid.forum.util.BeansLocator;
 
 /**
  * Servlet implementation class PostServlet
@@ -74,7 +73,7 @@ public class PostServlet extends HttpServlet {
 		LeafDAO dao = new LeafDAO();
 		try {
 			request.setAttribute("msg",
-					dao.getRootList(dao.get(Integer.valueOf(rootId))));
+					dao.getMsgFromRoot(dao.get(Integer.valueOf(rootId))));
 			request.setAttribute("upperRootId",
 					dao.get(dao.get(rootId).getUpperLeafId()));
 		} finally {

@@ -10,7 +10,7 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">Forum</a>
+			<a class="navbar-brand" href="home">Forum</a>
 		</div>
 		<c:if test="${sessionScope.user == null}">
 			<jsp:include page="header.jsp"></jsp:include>

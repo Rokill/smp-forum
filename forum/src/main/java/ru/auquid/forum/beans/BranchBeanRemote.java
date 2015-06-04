@@ -11,4 +11,6 @@ public interface BranchBeanRemote {
 	public void createMsgLeaf(String msg, Integer rootId, User user);
 
 	public void createNewTheme(Integer rootId, String msg, User user);
+	
+	public void updateName(Integer id, String name);
 }

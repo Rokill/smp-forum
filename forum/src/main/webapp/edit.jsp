@@ -15,9 +15,8 @@
 <title>Forum</title>
 
 <!-- Bootstrap Core CSS -->
-<link rel="stylesheet"
-	href="resources/css/bootstrap.min.css">
-	<link rel="stylesheet" href="resources/css/font-awesome.min.css">
+<link rel="stylesheet" href="resources/css/bootstrap.min.css">
+<link rel="stylesheet" href="resources/css/font-awesome.min.css">
 
 <!-- Custom CSS -->
 <style>
@@ -40,34 +39,39 @@ body {
 
 	<jsp:include page="partials/nav.jsp"></jsp:include>
 
-	<!-- Page Content -->
 	<div class="container">
-
 		<div class="row">
-			<div class="col-lg-12 text-center">
-				<section id="unseen">
-					<h2>Successfully logged!</h2>
-					<br>You will be redirected shortly.
-				</section>
+			<div class="col-lg-4"></div>
+			<div class="col-lg-4 text-center">
+				<form class="form-sign form-horizontal" action="edit" method="post"
+					autocomplete="off">
+					<h2 class="form-sign-heading">Name Editing</h2>
+					<h5 class="form-sign-error-msg">${requestScope.errorMessage}</h5>
+					<div class="control-group">
+						<div class="controls">
+							<input type="text" name="name" class="form-control"
+								placeholder="User name" minlength="1" maxlength="40" required
+								autofocus data-validation-required-message="Name is required" />
+							<br /> <input type="hidden" value="${id}" name="id">
+							<button class="btn btn-lg btn-primary btn-block register"
+								type="submit" name="register" id="register">Edit Name</button>
+						</div>
+				</form>
 			</div>
+			<div class="col-lg-4"></div>
 		</div>
 		<!-- /.row -->
 
 	</div>
 	<!-- /.container -->
 
+
 	<!-- jQuery Version 1.11.1 -->
 	<script src="/resources/js/jquery.js"></script>
 
 	<!-- Bootstrap Core JavaScript -->
 	<script src="/resources/js/bootstrap.min.js"></script>
-
-	<script>
-		setTimeout(function() {
-			document.location = "goto?id=<c:out value="${sessionScope.rootId}"/>";
-		}, 3000); // <-- this is the delay in milliseconds
-	</script>
-
+	
 </body>
 
 </html>
